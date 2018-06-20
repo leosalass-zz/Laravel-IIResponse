@@ -1,5 +1,5 @@
 {
-    "name": "immersioninteractive/ResponseController",
+    "name": "immersioninteractive/Laravel-IIResponse",
     "type": "library",
     "description": "Generic Response class to make our work easier with Laravel",
     "keywords": ["Laravel","Generic"],
