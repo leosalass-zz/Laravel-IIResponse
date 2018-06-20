@@ -1,0 +1,30 @@
+{
+    "name": "immersioninteractive/ResponseController",
+    "type": "library",
+    "description": "Generic Response class to make our work easier with Laravel",
+    "keywords": ["Laravel","Generic"],
+    "homepage": "https://github.com/leosalass/ResponseController",
+    "license": "MIT",
+    "authors": [{
+        "name": "Leonardo Salas",
+        "email": "info@immersioninteractive.com",
+        "role": "Full Stack Developer"
+    }],
+    "minimum-stability": "dev",
+    "require": {},
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Immersioninteractive\\ResponseController\\IIResponseServiceProvider"
+            ],
+            "aliases": {
+                "IIResponse": "Immersioninteractive\\ResponseController\\IIResponseFacade"
+            }
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Immersioninteractive\\ResponseController\\": "src/"
+        }
+    }
+}
