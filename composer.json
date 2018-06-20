@@ -1,9 +1,9 @@
 {
-    "name": "immersioninteractive/Laravel-IIResponse",
+    "name": "immersioninteractive/ResponseController",
     "type": "library",
     "description": "Generic Response class to make our work easier with Laravel",
     "keywords": ["Laravel","Generic"],
-    "homepage": "https://github.com/leosalass/ResponseController",
+    "homepage": "https://github.com/leosalass/Laravel-IIResponse",
     "license": "MIT",
     "authors": [{
         "name": "Leonardo Salas",
