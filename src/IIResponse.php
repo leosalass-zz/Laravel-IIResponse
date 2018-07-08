@@ -87,11 +87,12 @@ class IIResponse extends Controller
     /**
      * Instantiate a new IIResponseController instance.
      */
-    public function __construct(){
+    public function __construct()
+    {
         self::$status_codes = array_merge(
-            self::$status_codes_success, 
-            self::$status_codes_redirections, 
-            self::$status_codes_client_errors, 
+            self::$status_codes_success,
+            self::$status_codes_redirections,
+            self::$status_codes_client_errors,
             self::$status_codes_server_errors);
     }
 
@@ -123,10 +124,10 @@ class IIResponse extends Controller
      */
     public static function has_errors()
     {
-        if(self::$errors == null){
+        if (self::$errors == null) {
             return false;
         }
-        
+
         return true;
     }
 
@@ -138,6 +139,12 @@ class IIResponse extends Controller
      */
     public static function set_status_code($status_text)
     {
+        self::$status_codes = array_merge(
+            self::$status_codes_success,
+            self::$status_codes_redirections,
+            self::$status_codes_client_errors,
+            self::$status_codes_server_errors);
+
         self::$status_code = self::$status_codes[$status_text];
         self::$status_text = $status_text;
     }
@@ -153,7 +160,6 @@ class IIResponse extends Controller
         self::$data = $data;
     }
 
-
     /**
      * response
      *
@@ -161,27 +167,34 @@ class IIResponse extends Controller
      * @param [type] $status
      * @return void
      */
-    public static function response($data = NULL, $status = NULL)
-    {        
-        if($data != NULL){
+    public static function response($data = null, $status = null)
+    {
+        if ($data != null) {
             self::$data = $data;
         }
-        
-        if ($status != NULL) {
+
+        if ($status != null) {
+
+            self::$status_codes = array_merge(
+                self::$status_codes_success,
+                self::$status_codes_redirections,
+                self::$status_codes_client_errors,
+                self::$status_codes_server_errors);
+
             self::$status_code = self::$status_codes[$status];
-        }        
-        
-        if(self::$errors != NULL){
+        }
+
+        if (self::$errors != null) {
             self::$data = self::$errors;
-            if(in_array(self::$status_code, self::$status_codes_success) || self::$status_code == NULL){
+            if (in_array(self::$status_code, self::$status_codes_success) || self::$status_code == null) {
                 self::$status_code = 400;
             }
-        }else{
-            if(!in_array(self::$status_code, self::$status_codes_success) || self::$status_code == NULL){
+        } else {
+            if (!in_array(self::$status_code, self::$status_codes_success) || self::$status_code == null) {
                 self::$status_code = 200;
             }
         }
-        
+
         return response()->json(self::$data, self::$status_code);
     }
 }
